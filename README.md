@@ -44,7 +44,10 @@ When I have require('isotope'); below import, I get error message on page:
     Cannot find module 'isotope'
     Updated config.json to have same code that loaded library on another project.
     Isotope.js is loaded on the page!
-    
+
+Now to get styling working:
+Updated class references to alias type per section:  HTML with referenced css classes.
+
 ```
 
 ### config.json updates
@@ -83,6 +86,31 @@ When I have require('isotope'); below import, I get error message on page:
 Pressing each tab should change the order
 NOTE:  replaced button-group, post-transition, noble-gas nonmetal with camelCase
 
+### HTML with referenced css classes.
+
+```html
+  <div class="${ styles.buttonGroup } sort-by-buttonGroup">
+    <button class="${ styles.button } isChecked${ styles.button }" data-sort-value="original-order">original order</button>
+    <button class="${ styles.button }" data-sort-value="name">name</button>
+  </div>
+
+  <div class="${ styles.grid }">
+    <div class="${ styles.elementItem } ${ styles.postTransition } metal " data-category="post-transition">
+      <h3 class="name">Bismuth</h3>
+      <p class="symbol">Bi</p>
+      <p class="number">83</p>
+      <p class="weight">208.980</p>
+    </div>
+    <div class="${ styles.elementItem } ${ styles.nobleGas } nonmetal " data-category="noble-gas">
+      <h3 class="name">Argon</h3>
+      <p class="symbol">Ar</p>
+      <p class="number">18</p>
+      <p class="weight">39.948</p>
+    </div>
+  </div>
+```
+
+### Original Hard-Coded sample data - but fewer items
 ```html
 <h1>Isotope - sorting</h1>
 

@@ -11,6 +11,7 @@ import * as strings from 'AIsotopeTestWebPartStrings';
 
 //* MZ CHANGES---- added imports for jQuery and isotope ---- */
 import * as $ from 'jquery';
+//AC Format of require
 require('isotope');
 
 export interface IAIsotopeTestWebPartProps {
@@ -28,25 +29,25 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
 
             <h1>Isotope - sorting</h1>
 
-            <div class="buttonGroup sort-by-buttonGroup">
-              <button class="button is-checked" data-sort-value="original-order">original order</button>
-              <button class="button" data-sort-value="name">name</button>
-            </div>
+              <div class="${ styles.buttonGroup } sort-by-buttonGroup">
+                <button class="${ styles.button } isChecked${ styles.button }" data-sort-value="original-order">original order</button>
+                <button class="${ styles.button }" data-sort-value="name">name</button>
+              </div>
 
-            <div class="grid">
-              <div class="elementItem postTransition metal " data-category="post-transition">
-                <h3 class="name">Bismuth</h3>
-                <p class="symbol">Bi</p>
-                <p class="number">83</p>
-                <p class="weight">208.980</p>
+              <div class="${ styles.grid }">
+                <div class="${ styles.elementItem } ${ styles.postTransition } metal " data-category="post-transition">
+                  <h3 class="name">Bismuth</h3>
+                  <p class="symbol">Bi</p>
+                  <p class="number">83</p>
+                  <p class="weight">208.980</p>
+                </div>
+                <div class="${ styles.elementItem } ${ styles.nobleGas } nonmetal " data-category="noble-gas">
+                  <h3 class="name">Argon</h3>
+                  <p class="symbol">Ar</p>
+                  <p class="number">18</p>
+                  <p class="weight">39.948</p>
+                </div>
               </div>
-              <div class="elementItem nobleGas nonmetal " data-category="noble-gas">
-                <h3 class="name">Argon</h3>
-                <p class="symbol">Ar</p>
-                <p class="number">18</p>
-                <p class="weight">39.948</p>
-              </div>
-            </div>
 
 
             </div>
@@ -55,8 +56,6 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
       </div>`;
 
       const container:  JQuery = $(`.${ styles.aIsotopeTest }`, this.domElement);
-  }
-
 
     /* MZ CHANGES----   https://codepen.io/desandro/pen/lzCqe ---- */
     /* MZ CHANGES---- replace noble-gas with nobleGas ---- */
@@ -73,6 +72,14 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
     //    error on .isotope was:  prototype isotope does not exist on type JQuery<HTMLElements>
     
     /*
+
+      */
+
+//    OR THIS Syntax?      
+//   var $grid = $(styles.grid).isotope({
+
+
+/*   //ORIGINAL Typescript from Codepen
     var $grid = $('.grid').isotope({
       itemSelector: '.elementItem',
       layoutMode: 'fitRows',
@@ -87,14 +94,43 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
         }
       }
     });
+*/
+
+    const grid:  JQuery = $(styles.grid, this.domElement);
+     var $grid = (grid as any).isotope({
+      itemSelector: '.elementItem',
+      layoutMode: 'fitRows',
+      getSortData: {
+        name: '.name',
+        symbol: '.symbol',
+        number: '.number parseInt',
+        category: '[data-category]',
+        weight: function( itemElem ) {
+          var weight = $( itemElem ).find('.weight').text();
+          return parseFloat( weight.replace( /[\(\)]/g, '') );
+        }
+      }
+    });
+
 
     // bind sort button click
+    /*   //ORIGINAL Typescript from Codepen
+
     $('.sort-by-buttonGroup').on( 'click', 'button', function() {
       var sortValue = $(this).attr('data-sort-value');
       $grid.isotope({ sortBy: sortValue });
     });
+    */
+
+    $('.sort-by-buttonGroup').on( 'click', styles.button, function() {
+      var sortValue = $(this).attr('data-sort-value');
+      $grid.isotope({ sortBy: sortValue });
+    });
+
 
     // change is-checked class on buttons
+    /*   //ORIGINAL Typescript from Codepen
+
     $('.buttonGroup').each( function( i, buttonGroup ) {
       var $buttonGroup = $( buttonGroup );
       $buttonGroup.on( 'click', 'button', function() {
@@ -103,7 +139,19 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
       });
     });
 
-  */
+    */
+
+    $(styles.buttonGroup).each( function( i, buttonGroup ) {
+      var $buttonGroup = $( styles.buttonGroup );
+      $buttonGroup.on( 'click', styles.button, function() {
+        $buttonGroup.find(styles.isChecked).removeClass(styles.isChecked);
+        $( this ).addClass(styles.isChecked);
+      });
+    });
+
+
+
+  }
  
   protected get dataVersion(): Version {
     return Version.parse('1.0');
