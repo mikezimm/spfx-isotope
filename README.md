@@ -28,10 +28,30 @@ upon removing all js/ts code, gulp serve ran
 
 error when adding webpart to workbench:
 Failed to load path dependancy "isotope" from component ... due to another dependency that failed to load.
+
+cloned to laptop with project I was able to load jQuery and isotope.js.
+    ran npm install
+    gulp build
+    gulp serve - got same error.
+    npm install jquery
+    npm install @types/jquery --save-dev
+    npm install isotope-layout --save
+    npm install jquery@3.4.1
+    Added one line to return function using jQuery and now it loads :)
+
+Now that jQuery Loads, working on getting isotope to load.
+When I have require('isotope'); below import, I get error message on page:
+    Cannot find module 'isotope'
+    Updated config.json to have same code that loaded library on another project.
+    Isotope.js is loaded on the page!
+
+Now to get styling working:
+Updated class references to alias type per section:  HTML with referenced css classes.
+
 ```
 
 ### config.json updates
-
+```json
   "externals": {
     "jquery": {
       "path": "https://code.jquery.com/jquery-3.4.1.min.js",
@@ -45,6 +65,7 @@ Failed to load path dependancy "isotope" from component ... due to another depen
       ]
     }
   },
+```
 
 ### .ts import statements
 
@@ -65,6 +86,31 @@ Failed to load path dependancy "isotope" from component ... due to another depen
 Pressing each tab should change the order
 NOTE:  replaced button-group, post-transition, noble-gas nonmetal with camelCase
 
+### HTML with referenced css classes.
+
+```html
+  <div class="${ styles.buttonGroup } sort-by-buttonGroup">
+    <button class="${ styles.button } isChecked${ styles.button }" data-sort-value="original-order">original order</button>
+    <button class="${ styles.button }" data-sort-value="name">name</button>
+  </div>
+
+  <div class="${ styles.grid }">
+    <div class="${ styles.elementItem } ${ styles.postTransition } metal " data-category="post-transition">
+      <h3 class="name">Bismuth</h3>
+      <p class="symbol">Bi</p>
+      <p class="number">83</p>
+      <p class="weight">208.980</p>
+    </div>
+    <div class="${ styles.elementItem } ${ styles.nobleGas } nonmetal " data-category="noble-gas">
+      <h3 class="name">Argon</h3>
+      <p class="symbol">Ar</p>
+      <p class="number">18</p>
+      <p class="weight">39.948</p>
+    </div>
+  </div>
+```
+
+### Original Hard-Coded sample data - but fewer items
 ```html
 <h1>Isotope - sorting</h1>
 
