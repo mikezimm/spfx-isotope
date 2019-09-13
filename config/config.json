@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "a-isotope-test-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/aIsotopeTest/AIsotopeTestWebPart.js",
+          "manifest": "./src/webparts/aIsotopeTest/AIsotopeTestWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery": {
+      "path": "https://code.jquery.com/jquery-3.4.1.min.js",
+      "globalName": "jQuery"
+    },
+    "isotope": {
+      "path": "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js",
+      "globalName": "jQuery",
+      "globalDependencies": [
+        "jquery"
+      ]
+    }
+  },
+  "localizedResources": {
+    "AIsotopeTestWebPartStrings": "lib/webparts/aIsotopeTest/loc/{locale}.js"
+  }
+}
