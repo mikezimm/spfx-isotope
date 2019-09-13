@@ -28,10 +28,27 @@ upon removing all js/ts code, gulp serve ran
 
 error when adding webpart to workbench:
 Failed to load path dependancy "isotope" from component ... due to another dependency that failed to load.
+
+cloned to laptop with project I was able to load jQuery and isotope.js.
+    ran npm install
+    gulp build
+    gulp serve - got same error.
+    npm install jquery
+    npm install @types/jquery --save-dev
+    npm install isotope-layout --save
+    npm install jquery@3.4.1
+    Added one line to return function using jQuery and now it loads :)
+
+Now that jQuery Loads, working on getting isotope to load.
+When I have require('isotope'); below import, I get error message on page:
+    Cannot find module 'isotope'
+    Updated config.json to have same code that loaded library on another project.
+    Isotope.js is loaded on the page!
+    
 ```
 
 ### config.json updates
-
+```json
   "externals": {
     "jquery": {
       "path": "https://code.jquery.com/jquery-3.4.1.min.js",
@@ -45,6 +62,7 @@ Failed to load path dependancy "isotope" from component ... due to another depen
       ]
     }
   },
+```
 
 ### .ts import statements
 

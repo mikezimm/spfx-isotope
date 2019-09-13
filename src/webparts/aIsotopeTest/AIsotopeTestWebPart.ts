@@ -9,7 +9,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import styles from './AIsotopeTestWebPart.module.scss';
 import * as strings from 'AIsotopeTestWebPartStrings';
 
-/* MZ CHANGES---- added imports for jQuery and isotope ---- */
+//* MZ CHANGES---- added imports for jQuery and isotope ---- */
 import * as $ from 'jquery';
 require('isotope');
 
@@ -53,6 +53,8 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
           </div>
         </div>
       </div>`;
+
+      const container:  JQuery = $(`.${ styles.aIsotopeTest }`, this.domElement);
   }
 
 
