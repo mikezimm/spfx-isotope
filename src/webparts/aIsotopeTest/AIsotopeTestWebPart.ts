@@ -30,22 +30,22 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
             <h1>Isotope - sorting</h1>
 
               <div class="${ styles.buttonGroup } sort-by-buttonGroup">
-                <button class="${ styles.button } isChecked${ styles.button }" data-sort-value="original-order">original order</button>
+                <button class="${ styles.button } ${ styles.isChecked }" data-sort-value="original-order">original order</button>
                 <button class="${ styles.button }" data-sort-value="name">name</button>
               </div>
 
               <div class="${ styles.grid }">
-                <div class="${ styles.elementItem } ${ styles.postTransition } metal " data-category="post-transition">
-                  <h3 class="name">Bismuth</h3>
-                  <p class="symbol">Bi</p>
-                  <p class="number">83</p>
-                  <p class="weight">208.980</p>
+                <div class="${ styles.elementItem } ${ styles.postTransition } metal " data-category="${ styles.postTransition }">
+                  <h3 class="${styles.name}">Bismuth</h3>
+                  <p class="${styles.symbol}">Bi</p>
+                  <p class="${styles.number}">83</p>
+                  <p class="${styles.weight}">208.980</p>
                 </div>
-                <div class="${ styles.elementItem } ${ styles.nobleGas } nonmetal " data-category="noble-gas">
-                  <h3 class="name">Argon</h3>
-                  <p class="symbol">Ar</p>
-                  <p class="number">18</p>
-                  <p class="weight">39.948</p>
+                <div class="${ styles.elementItem } ${ styles.nobleGas } nonmetal " data-category="${ styles.nobleGas }">
+                  <h3 class="${styles.name}">Argon</h3>
+                  <p class="${styles.symbol}">Ar</p>
+                  <p class="${styles.number}">18</p>
+                  <p class="${styles.weight}">39.948</p>
                 </div>
               </div>
 
@@ -55,7 +55,7 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
         </div>
       </div>`;
 
-      const container:  JQuery = $(`.${ styles.aIsotopeTest }`, this.domElement);
+      //const container:  JQuery = $(`.${ styles.aIsotopeTest }`, this.domElement);
 
     /* MZ CHANGES----   https://codepen.io/desandro/pen/lzCqe ---- */
     /* MZ CHANGES---- replace noble-gas with nobleGas ---- */
@@ -98,15 +98,15 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
 
     const grid:  JQuery = $(styles.grid, this.domElement);
      var $grid = (grid as any).isotope({
-      itemSelector: '.elementItem',
+      itemSelector: styles.elementItem,
       layoutMode: 'fitRows',
       getSortData: {
-        name: '.name',
-        symbol: '.symbol',
-        number: '.number parseInt',
+        name: styles.name,
+        symbol: styles.symbol,
+        number: styles.number + ' parseInt',
         category: '[data-category]',
         weight: function( itemElem ) {
-          var weight = $( itemElem ).find('.weight').text();
+          var weight = $( itemElem ).find(styles.weight).text();
           return parseFloat( weight.replace( /[\(\)]/g, '') );
         }
       }
@@ -152,6 +152,8 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
 
 
   }
+
+  
  
   protected get dataVersion(): Version {
     return Version.parse('1.0');
