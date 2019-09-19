@@ -142,7 +142,7 @@ NOTE:  replaced button-group, post-transition, noble-gas nonmetal with camelCase
 
 
 ### Proof that when you remove the isotope call, the styling does look right:
-![Screenshot](https://github.com/mikezimm/spfx-isotope/blob/Have-styling-working-but-no-onclick-2019-09-30/assets/Current Styling but no functionality.PNG)
+![Screenshot](https://github.com/mikezimm/spfx-isotope/blob/Have-styling-working-but-no-onclick-2019-09-30/assets/CurrentStylingButNofunctionality.PNG)
 
 
 This package produces the following:
