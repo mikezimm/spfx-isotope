@@ -12,6 +12,11 @@ yo @microsoft/sharepoint
 npm install jquery
 npm install @types/jquery --save-dev
 npm install isotope-layout --save
+
+if cloning repo and not running you... do this as well:
+    npm install @microsoft/sp-webpart-base
+    npm install @microsoft/sp-core-library
+
 updated config.json per notes below
 
 changed dash-css--classes to dashCssClasses per notes below
@@ -134,6 +139,10 @@ NOTE:  replaced button-group, post-transition, noble-gas nonmetal with camelCase
   </div>
 </div>
 ```
+
+
+### Proof that when you remove the isotope call, the styling does look right:
+![Screenshot](/Current Styling but no functionality.PNG)
 
 
 This package produces the following:

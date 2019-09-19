@@ -36,16 +36,16 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
 
               <div class="${ styles.grid }">
                 <div class="${ styles.elementItem } ${ styles.postTransition } metal " data-category="post-transition">
-                  <h3 class="name">Bismuth</h3>
-                  <p class="symbol">Bi</p>
-                  <p class="number">83</p>
-                  <p class="weight">208.980</p>
+                  <h3 class="${styles.name}">Bismuth</h3>
+                  <p class="${styles.symbol}">Bi</p>
+                  <p class="${styles.number}">83</p>
+                  <p class="${styles.weight}">208.980</p>
                 </div>
                 <div class="${ styles.elementItem } ${ styles.nobleGas } nonmetal " data-category="noble-gas">
-                  <h3 class="name">Argon</h3>
-                  <p class="symbol">Ar</p>
-                  <p class="number">18</p>
-                  <p class="weight">39.948</p>
+                  <h3 class="${styles.name}">Argon</h3>
+                  <p class="${styles.symbol}">Ar</p>
+                  <p class="${styles.number}">18</p>
+                  <p class="${styles.weight}">39.948</p>
                 </div>
               </div>
 
@@ -55,7 +55,7 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
         </div>
       </div>`;
 
-      const container:  JQuery = $(`.${ styles.aIsotopeTest }`, this.domElement);
+      //const container:  JQuery = $(`.${ styles.aIsotopeTest }`, this.domElement);
 
     /* MZ CHANGES----   https://codepen.io/desandro/pen/lzCqe ---- */
     /* MZ CHANGES---- replace noble-gas with nobleGas ---- */
@@ -94,7 +94,7 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
         }
       }
     });
-*/
+
 
     const grid:  JQuery = $(styles.grid, this.domElement);
      var $grid = (grid as any).isotope({
@@ -111,7 +111,7 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
         }
       }
     });
-
+*/
 
     // bind sort button click
     /*   //ORIGINAL Typescript from Codepen
@@ -120,13 +120,13 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
       var sortValue = $(this).attr('data-sort-value');
       $grid.isotope({ sortBy: sortValue });
     });
-    */
+
 
     $('.sort-by-buttonGroup').on( 'click', styles.button, function() {
       var sortValue = $(this).attr('data-sort-value');
       $grid.isotope({ sortBy: sortValue });
     });
-
+    */
 
     // change is-checked class on buttons
     /*   //ORIGINAL Typescript from Codepen
