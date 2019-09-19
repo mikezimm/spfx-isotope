@@ -142,7 +142,7 @@ NOTE:  replaced button-group, post-transition, noble-gas nonmetal with camelCase
 
 
 ### Proof that when you remove the isotope call, the styling does look right:
-![Screenshot](./assets/Current Styling but no functionality.PNG)
+![Screenshot](../assets/Current Styling but no functionality.PNG)
 
 
 This package produces the following:
