@@ -12,6 +12,11 @@ yo @microsoft/sharepoint
 npm install jquery
 npm install @types/jquery --save-dev
 npm install isotope-layout --save
+
+if cloning repo and not running you... do this as well:
+    npm install @microsoft/sp-webpart-base
+    npm install @microsoft/sp-core-library
+
 updated config.json per notes below
 
 changed dash-css--classes to dashCssClasses per notes below
@@ -114,26 +119,30 @@ NOTE:  replaced button-group, post-transition, noble-gas nonmetal with camelCase
 ```html
 <h1>Isotope - sorting</h1>
 
-<div class="button-group sort-by-button-group">
-  <button class="button is-checked" data-sort-value="original-order">original order</button>
-  <button class="button" data-sort-value="name">name</button>
+<div class="${ styles.buttonGroup } sort-by-buttonGroup">
+  <button class="${ styles.button } isChecked${ styles.button }" data-sort-value="original-order">original order</button>
+  <button class="${ styles.button }" data-sort-value="name">name</button>
 </div>
 
-<div class="grid">
-  <div class="element-item post-transition metal " data-category="post-transition">
-    <h3 class="name">Bismuth</h3>
-    <p class="symbol">Bi</p>
-    <p class="number">83</p>
-    <p class="weight">208.980</p>
+<div class="${ styles.grid }">
+  <div class="${ styles.elementItem } ${ styles.postTransition } metal " data-category="post-transition">
+    <h3 class="${styles.name}">Bismuth</h3>
+    <p class="${styles.symbol}">Bi</p>
+    <p class="${styles.number}">83</p>
+    <p class="${styles.weight}">208.980</p>
   </div>
-  <div class="element-item noble-gas nonmetal " data-category="noble-gas">
-    <h3 class="name">Argon</h3>
-    <p class="symbol">Ar</p>
-    <p class="number">18</p>
-    <p class="weight">39.948</p>
+  <div class="${ styles.elementItem } ${ styles.nobleGas } nonmetal " data-category="noble-gas">
+    <h3 class="${styles.name}">Argon</h3>
+    <p class="${styles.symbol}">Ar</p>
+    <p class="${styles.number}">18</p>
+    <p class="${styles.weight}">39.948</p>
   </div>
 </div>
 ```
+
+
+### Proof that when you remove the isotope call, the styling does look right:
+![Screenshot](./assets/CurrentStylingButNofunctionality.PNG)
 
 
 This package produces the following:

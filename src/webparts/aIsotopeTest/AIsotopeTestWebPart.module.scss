@@ -1,53 +1,28 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .aIsotopeTest {
-  .container {
-    max-width: 700px;
-    margin: 0px auto;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+
+  /* ---- button-group ---- */
+  .buttonGroup:after {
+    content: '';
+    display: block;
+    clear: both;
   }
 
-  .row {
-    @include ms-Grid-row;
-    @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
-    padding: 20px;
+  .buttonGroup .button {
+    float: left;
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 1px;
   }
 
-  .column {
-    @include ms-Grid-col;
-    @include ms-lg10;
-    @include ms-xl8;
-    @include ms-xlPush2;
-    @include ms-lgPush1;
-  }
+  .buttonGroup .button:first-child { border-radius: 0.5em 0 0 0.5em; }
+  .buttonGroup .button:last-child { border-radius: 0 0.5em 0.5em 0; }
 
-  .title {
-    @include ms-font-xl;
-    @include ms-fontColor-white;
-  }
-
-  .subTitle {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
-  .description {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
-    font-family: sans-serif;
-  }
-  
   /* ---- button ---- */
-  
   .button {
     display: inline-block;
-    padding: 0.5em 1.0em;
+    padding: 10px 18px;
     margin-bottom: 10px;
     background: #EEE;
     border: none;
@@ -56,65 +31,30 @@
     color: #222;
     font-family: sans-serif;
     font-size: 16px;
+    text-shadow: 0 1px white;
     cursor: pointer;
   }
-  
+
   .button:hover {
     background-color: #8CF;
+    text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
     color: #222;
   }
-  
+
   .button:active,
   .button.isChecked {
     background-color: #28F;
   }
 
-  /* MZ CHANGES---- replace is-checked with isChecked ---- */
-
   .button.isChecked {
     color: white;
+    text-shadow: 0 -1px hsla(0, 0%, 0%, 0.8);
   }
-  
+
   .button:active {
     box-shadow: inset 0 1px 10px hsla(0, 0%, 0%, 0.8);
   }
-  
-  /* ---- buttonGroup ---- */
-  /* MZ CHANGES---- replace button-group with buttonGroup ---- */
 
-  .buttonGroup:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-  
-  .buttonGroup .button {
-    float: left;
-    border-radius: 0;
-    margin-left: 0;
-    margin-right: 1px;
-  }
-  
-  .buttonGroup .button:first-child { border-radius: 0.5em 0 0 0.5em; }
-  .buttonGroup .button:last-child { border-radius: 0 0.5em 0.5em 0; }
-  
-  /* ---- grid ---- */
-  
-  .grid {
-    border: 1px solid #333;
-    max-width: 1200px;
-  }
-  
-  /* clear fix */
-  .grid:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
-  
-  /* ---- .elementItem ---- */
-  /* MZ CHANGES---- replace element-item with elementItem ---- */
-  
   .elementItem {
     position: relative;
     float: left;
@@ -125,15 +65,15 @@
     background: #888;
     color: #262524;
   }
-  
+
   .elementItem > * {
     margin: 0;
     padding: 0;
   }
-  
+
   .elementItem .name {
     position: absolute;
-  
+
     left: 10px;
     top: 60px;
     text-transform: none;
@@ -141,7 +81,7 @@
     font-size: 12px;
     font-weight: normal;
   }
-  
+
   .elementItem .symbol {
     position: absolute;
     left: 10px;
@@ -150,25 +90,21 @@
     font-weight: bold;
     color: white;
   }
-  
+
   .elementItem .number {
     position: absolute;
     right: 8px;
     top: 5px;
   }
-  
+
   .elementItem .weight {
     position: absolute;
     left: 10px;
     top: 76px;
     font-size: 12px;
   }
- 
-    /* MZ CHANGES----   https://codepen.io/desandro/pen/lzCqe ---- */
-    /* MZ CHANGES---- replace alkaline-earth with alkalineEarth ---- */
-    /* MZ CHANGES---- replace post-transition with postTransition ---- */
-    /* MZ CHANGES---- replace noble-gas with nobleGas ---- */
 
+  .elementItem.metal       { background: silver; background: hsl(0, 0%, 50%); }
   .elementItem.alkali          { background: #F00; background: hsl(   0, 100%, 50%); }
   .elementItem.alkalineEarth  { background: #F80; background: hsl(  36, 100%, 50%); }
   .elementItem.lanthanoid      { background: #FF0; background: hsl(  72, 100%, 50%); }
@@ -179,43 +115,21 @@
   .elementItem.diatomic        { background: #00F; background: hsl( 252, 100%, 50%); }
   .elementItem.halogen         { background: #F0F; background: hsl( 288, 100%, 50%); }
   .elementItem.nobleGas       { background: #F08; background: hsl( 324, 100%, 50%); }
-  
-  /* 
-  // OOTB SharePoint webpart
-  .button {
-    // Our button
-    text-decoration: none;
-    height: 32px;
-
-    // Primary Button
-    min-width: 80px;
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
-    color: $ms-color-white;
-
-    // Basic Button
-    outline: transparent;
-    position: relative;
-    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: $ms-font-size-m;
-    font-weight: $ms-font-weight-regular;
-    border-width: 0;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 16px;
-
-    .label {
-      font-weight: $ms-font-weight-semibold;
-      font-size: $ms-font-size-m;
-      height: 32px;
-      line-height: 32px;
-      margin: 0 4px;
-      vertical-align: top;
-      display: inline-block;
-    }
-  }
-  */
+  .elementItem.nonMetal { color: inherit;}
 
 }
+
+
+
+  /* ---- isotope ---- */
+  .grid {
+    //background-color: $ms-color-neutralLight;
+    padding: 15px;
+  }
+
+  /* clear fix */
+  .grid:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
