@@ -51,6 +51,15 @@
     text-shadow: 0 -1px hsla(0, 0%, 0%, 0.8);
   }
 
+  
+  .button:mixitup-control-active {
+    background-color: black
+  }
+  
+  .button.mixitup-control-active {
+    background-color: black
+  }
+
   .button:active {
     box-shadow: inset 0 1px 10px hsla(0, 0%, 0%, 0.8);
   }
@@ -118,7 +127,6 @@
   .elementItem.nonMetal { color: inherit;}
 
 }
-
 
 
   /* ---- isotope ---- */
