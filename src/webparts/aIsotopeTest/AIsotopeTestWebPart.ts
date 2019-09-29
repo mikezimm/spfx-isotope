@@ -14,6 +14,10 @@ import * as $ from 'jquery';
 //AC Format of require
 require('isotope');
 
+
+//this doesn't really work either
+//import * as isotope from 'isotope-layout'
+
 export interface IAIsotopeTestWebPartProps {
   description: string;
 }
@@ -32,6 +36,7 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
               <div class="${ styles.buttonGroup } sort-by-buttonGroup">
                 <button class="${ styles.button } isChecked${ styles.button }" data-sort-value="original-order">original order</button>
                 <button class="${ styles.button }" data-sort-value="name">name</button>
+                <button class="${ styles.button }" data-filter="${ styles.transition }">transition</button>
               </div>
 
               <div class="${ styles.grid }">
@@ -46,6 +51,12 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
                   <p class="${styles.symbol}">Ar</p>
                   <p class="${styles.number}">18</p>
                   <p class="${styles.weight}">39.948</p>
+                </div>
+                <div class="${ styles.elementItem } ${ styles.transition } metal " data-category="transition">
+                  <h3 class="${styles.name}">Gold</h3>
+                  <p class="${styles.symbol}">Au</p>
+                  <p class="${styles.number}">79</p>
+                  <p class="${styles.weight}">196.967</p>
                 </div>
               </div>
 
@@ -80,8 +91,10 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
 
 
 /*   //ORIGINAL Typescript from Codepen
-    var $grid = $('.grid').isotope({
-      itemSelector: '.elementItem',
+*/
+    var $grid: any= $(`.${styles.grid}`);
+    $grid.isotope({
+      itemSelector: `.${styles.elementItem}`,
       layoutMode: 'fitRows',
       getSortData: {
         name: '.name',
@@ -95,7 +108,7 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
       }
     });
 
-
+/*
     const grid:  JQuery = $(styles.grid, this.domElement);
      var $grid = (grid as any).isotope({
       itemSelector: '.elementItem',
@@ -120,13 +133,14 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
       var sortValue = $(this).attr('data-sort-value');
       $grid.isotope({ sortBy: sortValue });
     });
+    */
 
-
-    $('.sort-by-buttonGroup').on( 'click', styles.button, function() {
+    $('.sort-by-buttonGroup').on( 'click', `.${styles.button}`, function() {
       var sortValue = $(this).attr('data-sort-value');
       $grid.isotope({ sortBy: sortValue });
     });
-    */
+    /*
+*/
 
     // change is-checked class on buttons
     /*   //ORIGINAL Typescript from Codepen
