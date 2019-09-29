@@ -6,6 +6,8 @@ import {
 } from '@microsoft/sp-webpart-base';
 
 import styles from './AIsotopeTestWebPart.module.scss';
+//https://sharepoint.stackexchange.com/questions/210470/sharepoint-framework-ga-how-to-prevent-rewriting-of-css-class-names
+require('./unHashed.css');
 import * as strings from 'AIsotopeTestWebPartStrings';
 
 import * as $ from 'jquery';
@@ -53,7 +55,7 @@ export default class AIsotopeTestWebPart extends BaseClientSideWebPart<IAIsotope
     this.domElement.innerHTML = `
       <div class="${ styles.aIsotopeTest}">
             <div class="${styles.buttonGroup} filters-button-group">
-              <button class="${styles.button} ${styles.isChecked}" data-filter="all">show all</button>
+              <button class="${styles.button}" data-filter="all">show all</button>
               <button class="${styles.button}" data-filter=".${styles.metalloid}">metalloid</button>
               <button class="${styles.button}" data-filter=".${styles.metal}">metal</button>
               <button class="${styles.button}" data-filter=".${styles.transition}">transition</button>
